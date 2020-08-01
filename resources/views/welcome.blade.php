@@ -33,6 +33,7 @@
                 height: 100%;
                 position: absolute;
                 transform: translate(100%,0%);
+                overflow: hidden;
             }
             .active {
                 transform: translate(0,0);
@@ -59,13 +60,14 @@
             .box {
                 width: 100%;
                 height: 100vh;
-                background: url('slider/./Line\ pattern.png');
+                background: url('slider/./pattern.png');
                 background-size: 100% 100%;
                 background-repeat: no-repeat;
                 position: absolute;
                 z-index: 999;
                 -webkit-clip-path:polygon(0% 100%, 100% 100%, 100% 80%, 93% 85%, 8% 95%, 15% 6%, 89% 2%, 93% 95%, 100% 90%, 100% 0%, 0% 0%, 0% 100%);
                 transition: 2s;
+                overflow: hidden;
             }
             .full-height {
                 height: 100vh;
@@ -114,13 +116,27 @@
             }
             .wrap-area {
                 position: absolute;
-                top: 50px;
-                left: 150px;
-                width: 1100px;
-                height: 600px;
-                /* border: 1px solid red; */
+                width: 100%;
                 z-index: 1000;
             }
+            @media (max-width: 576px) {
+                .wrap-area {
+                    background-color: white;
+                }
+            }
+
+            @media (min-width: 768px) {
+
+            }
+
+            @media (min-width: 992px) {
+
+            }
+
+            @media (min-width: 1200px) {
+
+            }
+       
         </style>
     </head>
     <body>
@@ -150,7 +166,6 @@
                 </div>
             </div>
         </div>
-    
     </div>
     <div class="box"></div>
             
