@@ -50,11 +50,11 @@
                 background-size: 100% 100%;
             }
             .s3 {
-                background: url('slider/slider3.jpg');
+                background: url('slider/slider1.jpg');
                 background-size: 100% 100%;
             }
             .s4 {
-                background: url('slider/slider1.jpg');
+                background: url('slider/slider2.jpg');
                 background-size: 100% 100%;
             }
             .box {
@@ -65,7 +65,7 @@
                 background-repeat: no-repeat;
                 position: absolute;
                 z-index: 999;
-                -webkit-clip-path:polygon(0% 100%, 100% 100%, 100% 80%, 93% 85%, 8% 95%, 10% 6%, 89% 2%, 93% 95%, 100% 90%, 100% 0%, 0% 0%, 0% 100%);
+                -webkit-clip-path:polygon(0% 100%, 100% 100%, 100% 80%, 93% 85%, 8% 95%, 15% 6%, 89% 2%, 93% 95%, 100% 90%, 100% 0%, 0% 0%, 0% 100%);
                 transition: 2s;
                 overflow: hidden;
             }
@@ -198,7 +198,7 @@
                 $('.box').css({'-webkit-clip-path':'polygon(0% 100%, 100% 100%, 100% 90%,85% 95%, 10% 78%, 7% 6%, 90% 5%, 85% 95%, 100% 95%, 100% 0%, 0% 0%, 0% 100%)'});
                 flag=1;
             } else {
-                $('.box').css({'-webkit-clip-path':"polygon(0% 100%, 100% 100%, 100% 80%, 93% 85%, 8% 95%, 10% 6%, 89% 2%, 93% 95%, 100% 90%, 100% 0%, 0% 0%, 0% 100%)"});
+                $('.box').css({'-webkit-clip-path':"polygon(0% 100%, 100% 100%, 100% 80%, 93% 85%, 8% 95%, 15% 6%, 89% 2%, 93% 85%, 100% 80%, 100% 0%, 0% 0%, 0% 100%)"});
                 flag=0;
             }
         }

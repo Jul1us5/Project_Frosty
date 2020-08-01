@@ -47,7 +47,7 @@ function show() {
     activeSlide.removeClass('.active').next('.slide').addClass('active');
 
     if(flag==0) {
-        $('.box').css({'-webkit-clip-path':'polygon(0% 100%, 100% 100%, 100% 90%,85% 95%, 10% 78%, 7% 6%, 90% 5%, 85% 95%, 100% 95%, 100% 0%, 0% 0%, 0% 100%)'});
+        $('.box').css({'-webkit-clip-path':'polygon(0% 100%, 100% 100%, 100% 90%,85% 95%, 5% 88%, 7% 6%, 90% 5%, 85% 100%, 100% 95%, 100% 0%, 0% 0%, 0% 100%)'});
         flag=1;
     } else {
         $('.box').css({'-webkit-clip-path':"polygon(0% 100%, 100% 100%, 100% 80%, 93% 85%, 8% 95%, 10% 6%, 89% 2%, 93% 95%, 100% 90%, 100% 0%, 0% 0%, 0% 100%)"});
