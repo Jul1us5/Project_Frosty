@@ -8,6 +8,7 @@
                 
 
            
+                    <div class="home_container">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
@@ -15,8 +16,8 @@
                     @endif
 
                     {{ __('You are logged in!') }}
-                
-       
+                    </div>
+                    @include('layouts.menu')
         </div>
     </div>
 </div>
