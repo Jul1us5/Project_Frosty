@@ -79,10 +79,10 @@
             </div>
             <div class="box" style="background: url('slider/pattern.png');"></div>
             <div class="slider">
-                <div class="slide s1 active" style="background: url('slider/slide1.jpg'); background-size: 100% 100%;"></div>
-                <div class="slide s2" style="background: url('slider/slide3.jpg'); background-size: 100% 100%;"></div>
-                <div class="slide s3" style="background: url('slider/slide1.jpg'); background-size: 100% 100%;"></div>
-                <div class="slide s4" style="background: url('slider/slide4.jpg'); background-size: 100% 100%;"></div>
+                <div class="slide s1 active" style="background: url('slider/slider1.jpg'); background-size: 100% 100%;"></div>
+                <div class="slide s2" style="background: url('slider/slider2.jpg'); background-size: 100% 100%;"></div>
+                <div class="slide s3" style="background: url('slider/slider3.jpg'); background-size: 100% 100%;"></div>
+                <div class="slide s4" style="background: url('slider/slider1.jpg'); background-size: 100% 100%;"></div>
             </div>
 </body>
 </html>
