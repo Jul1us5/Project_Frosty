@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 
         <title>Laravel</title>
 
@@ -13,20 +13,15 @@
         <!-- Styles -->
         <style>
             html, body {
-                /* background-color: #fff; */
-                /* color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh; */
                 margin: 0;
                 padding: 0;
             }
             .slider {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            margin: auto;
-            overflow: hidden;
+                position: relative;
+                width: 100%;
+                height: 100vh;
+                margin: auto;
+                overflow: hidden;
             }
             .slide {
                 width: 100%;
@@ -37,9 +32,11 @@
             }
             .active {
                 transform: translate(0,0);
+  
             }
             .active ˜ .slide {
                 transform: translate(100%, 0);
+                transition: 1s;
             }
             .s1 {
                 background: url('slider/slider1.jpg');
@@ -66,7 +63,7 @@
                 position: absolute;
                 z-index: 999;
                 -webkit-clip-path:polygon(0% 100%, 100% 100%, 100% 80%, 93% 85%, 8% 95%, 15% 6%, 89% 2%, 93% 95%, 100% 90%, 100% 0%, 0% 0%, 0% 100%);
-                transition: 2s;
+                transition: 4s;
                 overflow: hidden;
             }
             .full-height {
@@ -121,7 +118,10 @@
             }
             @media (max-width: 576px) {
                 .wrap-area {
-                    background-color: white;
+                    background: url('slider/slider1.jpg');
+                    background-size: cover;
+                    background-repeat: no-repeat;
+
                 }
             }
 
@@ -154,10 +154,10 @@
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
+                        <a href="{{ route('login') }}">Prisijungti</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
+                            <a href="{{ route('register') }}">Registracija</a>
                         @endif
                     @endauth
                 @endif
@@ -202,5 +202,6 @@
                 flag=0;
             }
         }
+
     </script>
 </html>

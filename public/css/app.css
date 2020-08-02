@@ -10954,6 +10954,7 @@ body {
 
 .active ˜ .slide {
   transform: translate(100%, 0);
+  transition: 1s;
 }
 
 .box {
@@ -10963,14 +10964,13 @@ body {
   position: absolute;
   z-index: 999;
   -webkit-clip-path: polygon(0% 100%, 100% 100%, 100% 80%, 93% 85%, 8% 95%, 10% 6%, 89% 2%, 93% 95%, 100% 90%, 100% 0%, 0% 0%, 0% 100%);
-  transition: 2s;
+  transition: 4s;
   overflow: hidden;
 }
 
 .wrap-area {
   position: absolute;
   margin-top: 0px;
-  margin-left: calc(50% - 550px);
   width: 100%;
   height: 600px;
   z-index: 1000;
@@ -10989,7 +10989,8 @@ body {
   display: inline-block;
   width: 100%;
   height: 50px;
-  padding-right: 40px;
+  padding-right: 20px;
+  margin-top: 10px;
 }
 
 .meniu a:nth-child(1) {
@@ -10998,7 +10999,8 @@ body {
   text-decoration: none;
   font-weight: bold;
   font-size: 18px;
-  color: white;
+  color: black;
+  background-color: #fcfff6;
 }
 
 .meniu a {
@@ -11007,21 +11009,72 @@ body {
   text-decoration: none;
   font-weight: bold;
   font-size: 16px;
-  padding-right: 18px;
-  padding: 4px;
+  line-height: 20px;
+  padding: 0px 12px;
   margin: 3px;
-  color: white;
+  color: black;
+  background-color: #fcfff6;
 }
 
 .meniu a:hover {
-  color: rgba(210, 0, 0, 0.692);
+  color: #fff;
+  background-color: #6a6a6a;
   transition: 0.5s;
 }
 
 .home_container {
   display: inline-block;
-  width: 100%;
+  width: 98%;
   min-height: 470px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.card a {
+  color: orange;
+}
+
+.card-header {
+  background-color: #fffeec;
+}
+
+.form-group {
+  color: black;
+}
+
+.form-group a {
+  background-color: white;
+}
+
+.my-nav {
+  display: inline-block;
+  width: 100%;
+}
+
+.my-nav a {
+  display: inline-block;
+  width: 100%;
+  float: left;
+  font-size: 16px;
+  padding: 5px 0;
+  text-decoration: none;
+}
+
+.my-nav a:last-of-type {
+  display: inline-block;
+  width: 100%;
+  float: left;
+  font-size: 16px;
+  padding-top: 15px;
+  background-color: transparent;
+}
+
+.my-nav a:hover {
+  color: #b54848;
+  transition: 0.5s;
 }
 
 @media (max-width: 576px) {
@@ -11032,19 +11085,55 @@ body {
     width: 100%;
     height: 100vh;
     z-index: 1000;
-    background-color: #f4f4f4;
+  }
+
+  .wrap-area a:nth-child(1) {
+    color: black;
+  }
+
+  .wrap-area a {
+    color: black;
+  }
+
+  .meniu {
+    display: none;
+  }
+
+  .dropdown-menu {
+    height: 0;
+    background-clip: none;
+    border: none;
+    border-radius: none;
+    opacity: 0;
+    transition: 10s;
   }
 }
 
-@media (max-width: 768px) {
+@media (min-width: 600px) {
+  .my-nav {
+    display: none;
+  }
+}
+
+@media (max-width: 840px) {
   .wrap-area {
     position: absolute;
     margin-top: 0px;
-    margin-left: 0px;
+    margin-left: 0;
     width: 100%;
     height: 100vh;
     z-index: 1000;
-    background-color: #f4f4f4;
+    background: url("http://localhost:8888/project_frosty/public/slider/slider3.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .wrap-area a:nth-child(1) {
+    color: black;
+  }
+
+  .wrap-area a {
+    color: black;
   }
 }
 
@@ -11057,6 +11146,10 @@ body {
     height: 500px;
     z-index: 1000;
   }
+
+  .my-nav {
+    display: none;
+  }
 }
 
 @media (min-width: 1200px) {
@@ -11067,6 +11160,10 @@ body {
     width: 1100px;
     height: 600px;
     z-index: 1000;
+  }
+
+  .my-nav {
+    display: none;
   }
 }
 

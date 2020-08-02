@@ -15,7 +15,7 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    {{ __('Jūs esate prisijungę') }}
                     </div>
                     @include('layouts.menu')
         </div>
