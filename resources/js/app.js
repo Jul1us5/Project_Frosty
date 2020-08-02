@@ -31,26 +31,26 @@ require('./bootstrap');
 //     el: '#app',
 // });
 
-var slides = $('.slide');
-var flag = 0;
+// var slides = $('.slide');
+// var flag = 0;
 
-slides.first().before(slides.last());
+// slides.first().before(slides.last());
 
-setInterval(show, 4000);
+// setInterval(show, 4000);
 
-function show() {
-    slides = $('.slide');
-    var activeSlide = $('.active');
+// function show() {
+//     slides = $('.slide');
+//     var activeSlide = $('.active');
 
-    slides.last().after(slides.first());
+//     slides.last().after(slides.first());
 
-    activeSlide.removeClass('.active').next('.slide').addClass('active');
+//     activeSlide.removeClass('.active').next('.slide').addClass('active');
 
-    if(flag==0) {
-        $('.box').css({'-webkit-clip-path':'polygon(0% 100%, 100% 100%, 100% 90%,85% 95%, 5% 88%, 7% 6%, 90% 5%, 85% 100%, 100% 95%, 100% 0%, 0% 0%, 0% 100%)'});
-        flag=1;
-    } else {
-        $('.box').css({'-webkit-clip-path':"polygon(0% 100%, 100% 100%, 100% 80%, 93% 85%, 8% 95%, 10% 6%, 89% 2%, 93% 95%, 100% 90%, 100% 0%, 0% 0%, 0% 100%)"});
-        flag=0;
-    }
-}
+//     if(flag==0) {
+//         $('.box').css({'-webkit-clip-path':'polygon(0% 100%, 100% 100%, 100% 90%,85% 95%, 5% 88%, 7% 6%, 90% 5%, 85% 100%, 100% 95%, 100% 0%, 0% 0%, 0% 100%)'});
+//         flag=1;
+//     } else {
+//         $('.box').css({'-webkit-clip-path':"polygon(0% 100%, 100% 100%, 100% 80%, 93% 85%, 8% 95%, 10% 6%, 89% 2%, 93% 95%, 100% 90%, 100% 0%, 0% 0%, 0% 100%)"});
+//         flag=0;
+//     }
+// }
