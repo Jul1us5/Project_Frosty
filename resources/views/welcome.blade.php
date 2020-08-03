@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 
-        <title>Laravel</title>
+        <title>Restaurant</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -146,7 +146,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Stay Frosty
+                Restaurant " Menu "
                 </div>
 
                 <div class="links">
