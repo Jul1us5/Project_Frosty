@@ -10,11 +10,15 @@
     <title>{{ config('app.name', 'Stay Frosty!') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+    <!-- include summernote css/js -->
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -40,6 +44,7 @@
                                     <!-- Right Side Of Navbar -->
                                     <ul class="navbar-nav ml-auto">
                                         <!-- Authentication Links -->
+                                        
                                         @guest
                                             <li class="nav-item">
                                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Prisijungti') }}</a>
@@ -50,6 +55,7 @@
                                                 </li>
                                             @endif
                                         @else
+                                        
                                             <li class="nav-item dropdown">
                                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -93,6 +99,38 @@
                         </nav>
                     </div>
                     <main class="py-4">
+                    <div class="container">
+                       <div class="row justify-content-center">
+                           <div class="col-md-9">
+                               @if ($errors->any())
+                               <div class="alert">
+                                   <ul class="list-group">
+                                       @foreach ($errors->all() as $error)
+                                           <li class="list-group-item list-group-item-danger">{{ $error }}</li>
+                                       @endforeach
+                                   </ul>
+                               </div>
+                               @endif
+                           </div>
+                       </div>
+                   </div>
+                   <div class="container">
+                       <div class="row justify-content-center">
+                           <div class="col-md-9">
+                               @if(session()->has('success_message'))
+                                   <div class="alert alert-success" role="alert">
+                                       {{session()->get('success_message')}}
+                                   </div>
+                               @endif
+                              
+                               @if(session()->has('info_message'))
+                                   <div class="alert alert-info" role="alert">
+                                       {{session()->get('info_message')}}
+                                   </div>
+                               @endif
+                           </div>
+                       </div>
+                   </div>
                         @yield('content')
                     </main>
             </div>

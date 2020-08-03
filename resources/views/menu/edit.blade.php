@@ -18,8 +18,14 @@
                         Kaina: <input type="text" name="price" value="{{$menu->price}}">
                         Porcijos svoris: <input type="text" name="weight" value="{{$menu->weight}}">
                         Mėsos kiekis porcijoje: <input type="text" name="meat" value="{{$menu->meat}}">
-                        Tekstas: <textarea name="about">{{$menu->about}}"</textarea>
-
+                        
+                        <div class="form-group">
+                        <label>About</label>
+                        <input type="text" name="about" id="summernote" class="form-control" value="{{$menu->about}}">
+                        <!-- <textarea name="about" id="summernote"></textarea> -->
+                        <small class="form-text text-muted">.</small>
+                        </div>
+                        
              
                         <select name="restaurant_id">
                             @foreach ($restaurants as $restaurant)
@@ -40,4 +46,9 @@
         </div>
     </div>
 </div>
+<script>
+$(document).ready(function() {
+   $('#summernote').summernote();
+ });
+</script>
 @endsection

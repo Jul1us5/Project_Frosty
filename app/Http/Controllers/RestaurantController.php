@@ -92,10 +92,11 @@ class RestaurantController extends Controller
     public function destroy(Restaurant $restaurant)
     {
         if($restaurant->getMenu->count()){
-            return 'Trinti negalima, nes turi knygų';
+            return redirect()->route('restaurant.index')->with('success_message', 'Šis restoranas turi prisegta menių.');
         }
         $restaurant->delete();
-        return redirect()->route('restaurant.index');
+        return redirect()->route('restaurant.index')->with('success_message', 'Sekmingai ištrintas.');
+
         
     }
 }
