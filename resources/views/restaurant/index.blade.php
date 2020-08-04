@@ -13,12 +13,12 @@
                 @endif
 
 
-     
+                <span>Nr.</span><span>Pavadinimas</span><span>Žmonių</span><span>Personalas</span> <span>Patiekalas</span>
                 @if (!count($restaurants) == 0)
-                    @foreach ($restaurants as $restaurant)
+                    @foreach ($restaurants as $key => $restaurant)
                         <a href="{{route('restaurant.edit',[$restaurant])}}">
                             <div class="menu_box">
-                                
+                                    <span>{{$key+1}}</span>
                                     <span>{{$restaurant->name}}</span>
                                     <span>{{$restaurant->customers}}</span>
                                     <span>{{$restaurant->employees}}</span>

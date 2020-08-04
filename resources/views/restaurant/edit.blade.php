@@ -12,23 +12,30 @@
                     {{ session('status') }}
                 </div>
             @endif
+                <div class="home_head">
+                    <a href="{{route('home')}}"> < ATGAL </a>
+                    <p> Restorano koregavimas.</p>
+                </div>
 
-            <form method="POST" action="{{route('restaurant.store')}}">
-                Pavadinimas: <input type="text" name="name"><br>
-                Talpina žmonių: <input type="text" name="customers"><br>
-                Darbuotojų: <input type="text" name="employees"><br>
-        
-                <select name="menu_id">
-                    @foreach ($menus as $menu)
-                        <option value="{{$menu->id}}" @if($menu->id == $restaurant->menu_id) selected @endif>
-                            {{$menu->name}} {{$menu->price}}
-                        </option>
-                    @endforeach
-                </select>
+                <form method="POST" action="{{route('restaurant.store')}}">
+                    <div class="home_body">
+                        <span>Pavadinimas</span> <input type="text" name="name" value="{{$restaurant->name}}">
+                        <span>Talpina žmonių</span> <input type="text" name="customers" value="{{$restaurant->customers}}">
+                        <span>Darbuotojų</span> <input type="text" name="employees" value="{{$restaurant->employees}}">
+                    </div> 
+                    
+                    <select name="menu_id">
+                        
+                        @foreach ($menus as $menu)
+                            <option value="{{$menu->id}}" @if($menu->id == $restaurant->menu_id) selected @endif>
+                                {{$menu->title}} {{$menu->price}}
+                            </option>
+                        @endforeach
+                    </select>
+
                     @csrf
-                    <button type="submit">EDIT</button>
+                    <button class="button_Menu" type="submit">Baigti</button>
                 </form>
-
 
             </div>
             @include('layouts.menu')
