@@ -18,6 +18,9 @@ class CreateRestaurantsTable extends Migration
             $table->string('name', 255);
             $table->string('customers', 255);
             $table->string('employees', 255);
+
+            $table->unsignedBigInteger('menu_id');
+            $table->foreign('menu_id')->references('id')->on('menus');
             
             $table->timestamps();
         });

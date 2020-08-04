@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Menu;
-use App\Restaurant;
+use Validator;
 use Illuminate\Http\Request;
 
 class MenuController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -26,10 +30,7 @@ class MenuController extends Controller
      */
     public function create()
     {
-  
-        
-        $restaurants = Restaurant::all();
-        return view('menu.create', ['restaurants' => $restaurants]);
+        return view('menu.create')->with('success_message', 'Sekmingai sukurta');
     }
 
     /**
@@ -40,15 +41,55 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
+       
+        $validator = Validator::make($request->all(),
+        [
+            'title' => ['min:4', 'max:64'],
+            'price' => ['min:1', 'max:64'],
+            'weight' => ['min:1', 'max:64'],
+            'meat' => ['min:1', 'max:64'],
+            'about' => ['min:3', 'max:64'],
+        ],
+            [
+            'title.min' => 'Reikia užpildyti pavadinimą.',
+            'price.min' => 'Kaina nurodyta blogai.',
+            'weight.min' => 'Blogas svoris',
+            'meat.min' => 'Blogas svoris',
+            'about.min' => 'Nera komentaro.',
+            ]
+        );
+        if ($validator->fails()) {
+            $request->flash();
+            return redirect()->back()->withErrors($validator);
+        } 
+        if($request->price > 9999) {
+            $request->flash();
+            return redirect()->back()->withErrors($validator);
+        }
+                if($request->meat > $request->weight) {
+            return redirect()->back()->with('bad_message', 'Mėsos daugiau už svorio? :D');
+        }
+      
+    
+
         $menu = new Menu;
         $menu->title = $request->title;
         $menu->price = $request->price;
         $menu->weight = $request->weight;
         $menu->meat = $request->meat;
         $menu->about = $request->about;
-        $menu->restaurant_id = $request->restaurant_id; 
+        $menu->img = 'menu.jpg';
+
+        if($request->hasFile('img')) {
+            $imgae = $request->file('img');
+            $name = $request->file('img')->getClientOriginalName();
+            $destinationPath = public_path('/images/menu');
+            $imgae->move($destinationPath, $name);
+            $menu->img = $name;
+        }
+
         $menu->save();
-        return redirect()->route('menu.index');
+        return redirect()->route('menu.index')->with('success_message', 'Patiekalas pridėtas.');
     }
 
     /**
@@ -61,6 +102,7 @@ class MenuController extends Controller
     {
         //
     }
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -70,8 +112,7 @@ class MenuController extends Controller
      */
     public function edit(Menu $menu)
     {
-        $restaurants = Restaurant::all();
-        return view('menu.edit', ['menu' => $menu, 'restaurants' => $restaurants]);
+        return view('menu.edit', ['menu' => $menu]);
     }
 
     /**
@@ -83,14 +124,35 @@ class MenuController extends Controller
      */
     public function update(Request $request, Menu $menu)
     {
+        $validator = Validator::make($request->all(),
+        [
+            'title' => ['min:4', 'max:64'],
+            'price' => ['min:1', 'max:64'],
+            'weight' => ['min:1', 'max:64'],
+            'meat' => ['min:1', 'max:64'],
+            'about' => ['min:3', 'max:64'],
+        ],
+            [
+            'title.min' => 'Reikia užpildyti pavadinimą.',
+            'price.min' => 'Kaina nurodyta blogai.',
+            'weight.min' => 'Blogas svoris',
+            'meat.min' => 'Blogas svoris',
+            'about.min' => 'Nera komentaro.',
+            ]
+        );
+       if ($validator->fails()) {
+           $request->flash();
+           return redirect()->back()->withErrors($validator);
+       }
+        
         $menu->title = $request->title;
         $menu->price = $request->price;
         $menu->weight = $request->weight;
         $menu->meat = $request->meat;
         $menu->about = $request->about;
-        $menu->restaurant_id = $request->restaurant_id; 
+
         $menu->save();
-        return redirect()->route('menu.index');
+        return redirect()->route('menu.index')->with('success_message', 'Atnaujinta :)');
     }
 
     /**
@@ -101,7 +163,12 @@ class MenuController extends Controller
      */
     public function destroy(Menu $menu)
     {
+
+
+        if($menu->restaurant->count()){
+            return redirect()->route('menu.index')->with('success_message', 'Šis menių prisegtas.');
+        }
         $menu->delete();
-        return redirect()->route('menu.index');
+        return redirect()->route('menu.index')->with('success_message', 'Sekmingai ištrintas.');
     }
 }

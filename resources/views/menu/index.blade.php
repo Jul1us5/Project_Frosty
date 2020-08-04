@@ -13,15 +13,35 @@
                         {{ session('status') }}
                     </div>
                 @endif
-    
-                @foreach ($menus as $menu)
-                <form method="POST" action="{{route('menu.destroy', [$menu])}}">
-                <a href="{{route('menu.edit',[$menu])}}">{{$menu->title}} {{$menu->price}} {{$menu->weight}} {{$menu->meat}} {{$menu->about}}</a>
-                @csrf
-                <button type="submit">DELETE</button>
-                </form>
-                <br>
-                @endforeach
+
+
+                @if (!count($menus) == 0)
+                    @foreach($menus as $menu)
+                    <a href="{{route('menu.edit',[$menu])}}">
+                        <div class="menu_box">
+                            
+                                <span>{{$menu->title}}</span>
+                                <span><img src="{{asset('images/menu/'.$menu->img)}}" style="width: 50px; height: auto;"></span>
+                                <span>{{$menu->price}}</span>
+                                <span>{{$menu->weight}}</span>
+                                <span>{{$menu->meat}}</span>
+                                <span>{!!$menu->about!!}</span>
+                                
+                                
+                            <form method="POST" action="{{route('menu.destroy', [$menu])}}">
+                                <button type="submit">Pašalinti</button>
+                                @csrf
+                            </form>
+                        </div>
+                    </a>
+                    @endforeach
+                @else
+                    <div class="note">
+                        <p>Reikia sukurti meniu!</p>
+                    </div>
+                @endif
+
+                    
             </div>
             @include('layouts.menu')
         </div>

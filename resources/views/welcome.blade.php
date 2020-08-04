@@ -46,14 +46,6 @@
                 background: url('slider/slider2.jpg');
                 background-size: 100% 100%;
             }
-            .s3 {
-                background: url('slider/slider1.jpg');
-                background-size: 100% 100%;
-            }
-            .s4 {
-                background: url('slider/slider2.jpg');
-                background-size: 100% 100%;
-            }
             .box {
                 width: 100%;
                 height: 100vh;
@@ -146,7 +138,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                Restaurant " Menu "
+                Restaurant's
                 </div>
 
                 <div class="links">
@@ -172,8 +164,6 @@
         <div class="slider">
             <div class="slide s1 active"></div>
             <div class="slide s2"></div>
-            <div class="slide s3"></div>
-            <div class="slide s4"></div>
         </div>
 
     </body>

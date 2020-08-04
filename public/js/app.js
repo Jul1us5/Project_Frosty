@@ -37303,7 +37303,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // window
 // var slides = $('.slide');
 // var flag = 0;
 // slides.first().before(slides.last());
-// setInterval(show, 4000);
+// setInterval(show, 8000);
 // function show() {
 //     slides = $('.slide');
 //     var activeSlide = $('.active');

@@ -10,11 +10,15 @@
     <title>{{ config('app.name', 'Stay Frosty!') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+    <!-- include summernote css/js -->
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -40,6 +44,7 @@
                                     <!-- Right Side Of Navbar -->
                                     <ul class="navbar-nav ml-auto">
                                         <!-- Authentication Links -->
+                                        
                                         @guest
                                             <li class="nav-item">
                                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Prisijungti') }}</a>
@@ -50,6 +55,7 @@
                                                 </li>
                                             @endif
                                         @else
+                                        
                                             <li class="nav-item dropdown">
                                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -68,7 +74,7 @@
                                                         {{ __('Atsijungti') }}
                                                         
                                                     </a>
-                                                    </div>
+                                                </div>
                                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                                     onclick="event.preventDefault();
@@ -93,6 +99,37 @@
                         </nav>
                     </div>
                     <main class="py-4">
+
+                   <div class="container">
+                       <div class="row justify-content-center">
+                           <div class="col-md-9">
+                               @if(session()->has('success_message'))
+                                   <div class="alert alert-success" role="alert">
+                                       {{session()->get('success_message')}}
+                                   </div>
+                               @endif
+                               @if(session()->has('bad_message'))
+                                   <div class="alert alert-bad" role="alert">
+                                       {{session()->get('bad_message')}}
+                                   </div>
+                               @endif
+
+                               @if ($errors->any())
+                               @foreach ($errors->all() as $error)
+                                   <div class="alert alert-bad" role="alert">
+                                   {{ $error }}
+                                   </div>
+                                   @endforeach
+                               @endif
+                              
+                               @if(session()->has('info_message'))
+                                   <div class="alert alert-info" role="alert">
+                                       {{session()->get('info_message')}}
+                                   </div>
+                               @endif
+                           </div>
+                       </div>
+                   </div>
                         @yield('content')
                     </main>
             </div>
@@ -100,8 +137,6 @@
             <div class="slider">
                 <div class="slide s1 active"></div>
                 <div class="slide s2"></div>
-                <div class="slide s3"></div>
-                <div class="slide s4"></div>
             </div>
 </body>
 </html>
