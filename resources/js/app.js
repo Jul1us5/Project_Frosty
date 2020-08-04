@@ -36,7 +36,7 @@ require('./bootstrap');
 
 // slides.first().before(slides.last());
 
-// setInterval(show, 4000);
+// setInterval(show, 8000);
 
 // function show() {
 //     slides = $('.slide');

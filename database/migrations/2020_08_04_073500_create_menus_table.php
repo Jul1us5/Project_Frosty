@@ -14,16 +14,13 @@ class CreateMenusTable extends Migration
     public function up()
     {
         Schema::create('menus', function (Blueprint $table) {
-
             $table->id();
             $table->string('title', 255);
-            $table->string('price', 255);
-            $table->string('weight', 255);
-            $table->string('meat', 255);
-            $table->string('about', 255);
-
-            $table->unsignedBigInteger('restaurant_id');
-            $table->foreign('restaurant_id')->references('id')->on('restaurants');
+            $table->decimal('price', 6,2);
+            $table->integer('weight');
+            $table->integer('meat');
+            $table->text('about');
+            $table->string('img', 255);
 
             $table->timestamps();
         });

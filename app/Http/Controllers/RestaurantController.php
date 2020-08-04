@@ -3,10 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Restaurant;
+use App\Menu;
+use App\Validator;
 use Illuminate\Http\Request;
 
 class RestaurantController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +31,8 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-        return view('restaurant.create');
+        $menus = Menu::all();
+        return view('restaurant.create', ['menus' => $menus]);
     }
 
     /**
@@ -40,9 +47,9 @@ class RestaurantController extends Controller
         $restaurant->name = $request->name;
         $restaurant->customers = $request->customers;
         $restaurant->employees = $request->employees;
-
+        $restaurant->menu_id = $request->menu_id;
         $restaurant->save();
-        return redirect()->route('restaurant.index');
+        return redirect()->route('restaurant.index')->with('success_message', 'Restoranas pridėtas.');
     }
 
     /**
@@ -64,7 +71,8 @@ class RestaurantController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {
-        return view('restaurant.edit', ['restaurant' => $restaurant]);
+        $menus = Menu::all();
+        return view('restaurant.edit', ['restaurant' => $restaurant, 'menus' => $menus]);
     }
 
     /**
@@ -79,8 +87,9 @@ class RestaurantController extends Controller
         $restaurant->name = $request->name;
         $restaurant->customers = $request->customers;
         $restaurant->employees = $request->employees;
+        $restaurant->menu_id = $request->menu_id;
         $restaurant->save();
-        return redirect()->route('restaurant.index');
+        return redirect()->route('restaurant.index')->with('success_message', 'Atnaujinta :)');
     }
 
     /**
@@ -91,12 +100,8 @@ class RestaurantController extends Controller
      */
     public function destroy(Restaurant $restaurant)
     {
-        if($restaurant->getMenu->count()){
-            return redirect()->route('restaurant.index')->with('success_message', 'Šis restoranas turi prisegta menių.');
-        }
         $restaurant->delete();
         return redirect()->route('restaurant.index')->with('success_message', 'Sekmingai ištrintas.');
-
         
     }
 }

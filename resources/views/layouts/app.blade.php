@@ -74,7 +74,7 @@
                                                         {{ __('Atsijungti') }}
                                                         
                                                     </a>
-                                                    </div>
+                                                </div>
                                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                                     onclick="event.preventDefault();
@@ -99,21 +99,7 @@
                         </nav>
                     </div>
                     <main class="py-4">
-                    <div class="container">
-                       <div class="row justify-content-center">
-                           <div class="col-md-9">
-                               @if ($errors->any())
-                               <div class="alert">
-                                   <ul class="list-group">
-                                       @foreach ($errors->all() as $error)
-                                           <li class="list-group-item list-group-item-danger">{{ $error }}</li>
-                                       @endforeach
-                                   </ul>
-                               </div>
-                               @endif
-                           </div>
-                       </div>
-                   </div>
+
                    <div class="container">
                        <div class="row justify-content-center">
                            <div class="col-md-9">
@@ -121,6 +107,19 @@
                                    <div class="alert alert-success" role="alert">
                                        {{session()->get('success_message')}}
                                    </div>
+                               @endif
+                               @if(session()->has('bad_message'))
+                                   <div class="alert alert-bad" role="alert">
+                                       {{session()->get('bad_message')}}
+                                   </div>
+                               @endif
+
+                               @if ($errors->any())
+                               @foreach ($errors->all() as $error)
+                                   <div class="alert alert-bad" role="alert">
+                                   {{ $error }}
+                                   </div>
+                                   @endforeach
                                @endif
                               
                                @if(session()->has('info_message'))
@@ -138,8 +137,6 @@
             <div class="slider">
                 <div class="slide s1 active"></div>
                 <div class="slide s2"></div>
-                <div class="slide s3"></div>
-                <div class="slide s4"></div>
             </div>
 </body>
 </html>

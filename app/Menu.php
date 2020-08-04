@@ -1,14 +1,15 @@
 <?php
 
 namespace App;
+use Validator;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Menu extends Model
 {
-    public function getRestaurant()
+    public function restaurant()
     {
-        return $this->belongsTo('App\Restaurant', 'restaurant_id', 'id');
+        return $this->hasMany('App\restaurant', 'menu_id', 'id');
     }
  
 }
