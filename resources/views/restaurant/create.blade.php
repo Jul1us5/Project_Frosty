@@ -13,20 +13,30 @@
             @endif
 
             @if (!count($menus) == 0)
-                <form method="POST" action="{{route('restaurant.store')}}">
-                    Pavadinimas: <input type="text" name="name"><br>
-                    Talpina žmonių: <input type="text" name="customers"><br>
-                    Darbuotojų: <input type="text" name="employees"><br>
+                <div class="home_head">
+                    <a href="{{route('home')}}"> < ATGAL </a>
+                    <p> Pridėti Restoraną.</p>
+                </div>
 
+                <form method="POST" action="{{route('restaurant.store')}}">
+                <div class="home_body">
+                    <span>Pavadinimas:</span> <input type="text" name="name" value="{{old('name')}}"><br>
+                    <span>Talpina žmonių:</span> <input type="text" name="customers" value="{{old('customers')}}"><br>
+                    <span>Darbuotojų:</span> <input type="text" name="employees" value="{{old('employees')}}"><br>
+                    
                     <select name="menu_id">
+                    <span>Darbuotojų:</span>
                         @foreach ($menus as $menu)
-                            <option value="{{$menu->id}}">{{$menu->title}} {{$menu->price}}</option>
+                        <option class="options" value="{{$menu->id}}">{{$menu->title}} {{$menu->price}}</option>
                         @endforeach
                     </select>
-
+                </div>
                     @csrf
-                    <button type="submit">Pridėti</button>
+                    <button class="button_Menu" type="submit">Pridėti</button>
                 </form>
+
+
+
                 @else
                     <div class="note">
                         <p>Kolkas tuščia..</p>
