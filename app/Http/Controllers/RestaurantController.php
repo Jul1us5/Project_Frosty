@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Restaurant;
 use App\Menu;
-use App\Validator;
+use Validator;
 use Illuminate\Http\Request;
 
 class RestaurantController extends Controller
@@ -43,6 +43,25 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(),
+        [
+            'name' => ['min:4', 'max:64'],
+            'customers' => ['min:1', 'max:64'],
+            'employees' => ['min:1', 'max:64'],
+            'menu_id' => ['min:1', 'max:64'],
+        ],
+            [
+            'name.min' => 'Reikia užpildyti pavadinimą.',
+            'customers.min' => 'Žmonių skaičius nurodytas blogai.',
+            'employees.min' => 'Darbuotojų skaičius nurodytas blogai.',
+            'menu_id.min' => 'Blogas meniu',
+            ]
+        );
+        if ($validator->fails()) {
+            $request->flash();
+            return redirect()->back()->withErrors($validator);
+        }
+
         $restaurant = new Restaurant;
         $restaurant->name = $request->name;
         $restaurant->customers = $request->customers;
@@ -84,6 +103,25 @@ class RestaurantController extends Controller
      */
     public function update(Request $request, Restaurant $restaurant)
     {
+        $validator = Validator::make($request->all(),
+        [
+            'name' => ['min:4', 'max:64'],
+            'customers' => ['min:1', 'max:64'],
+            'employees' => ['min:1', 'max:64'],
+            'menu_id' => ['min:1', 'max:64'],
+        ],
+            [
+            'name.min' => 'Reikia užpildyti pavadinimą.',
+            'customers.min' => 'Žmonių skaičius nurodytas blogai.',
+            'employees.min' => 'Darbuotojų skaičius nurodytas blogai.',
+            'menu_id.min' => 'Blogas meniu',
+            ]
+        );
+        if ($validator->fails()) {
+            $request->flash();
+            return redirect()->back()->withErrors($validator);
+        }
+        
         $restaurant->name = $request->name;
         $restaurant->customers = $request->customers;
         $restaurant->employees = $request->employees;

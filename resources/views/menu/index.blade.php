@@ -14,8 +14,9 @@
                     </div>
                 @endif
 
-                <span>Pavadinimas</span><span>Kaina</span><span>Svoris</span> <span>Įdaras</span><span></span>
+                
                 @if (!count($menus) == 0)
+                <span>Pavadinimas</span><span>Kaina</span><span>Svoris</span> <span>Įdaras</span><span></span>
                     @foreach($menus as $menu)
                     <a href="{{route('menu.edit',[$menu])}}">
                     
