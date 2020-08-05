@@ -17,7 +17,7 @@
                     <p> Restorano koregavimas.</p>
                 </div>
 
-                <form method="POST" action="{{route('restaurant.store')}}">
+                <form method="POST" action="{{route('restaurant.update', [$restaurant])}}">
                     <div class="home_body">
                         <span>Pavadinimas</span> <input type="text" name="name" value="{{$restaurant->name}}">
                         <span>Talpina žmonių</span> <input type="text" name="customers" value="{{$restaurant->customers}}">
