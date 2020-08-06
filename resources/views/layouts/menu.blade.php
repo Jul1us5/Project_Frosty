@@ -5,6 +5,8 @@
             <a href="{{route('restaurant.index')}}">Restoranas</a>
             <a href="{{route('menu.create')}}">Sukurti</a>
             <a href="{{route('menu.index')}}">Meniu</a>
+            
+
        
         </div>            
 

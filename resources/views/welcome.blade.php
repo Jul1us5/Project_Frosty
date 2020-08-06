@@ -9,6 +9,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link rel="stylesheet" href="/Project_Frosty/public/css/font-awesome.min.css">
 
         <!-- Styles -->
         <style>
@@ -145,6 +146,7 @@
                 @if (Route::has('login'))
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
+                        
                     @else
                         <a href="{{ route('login') }}">Prisijungti</a>
 
@@ -160,7 +162,6 @@
         </div>
     </div>
     <div class="box"></div>
-            
         <div class="slider">
             <div class="slide s1 active"></div>
             <div class="slide s2"></div>

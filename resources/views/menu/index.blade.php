@@ -25,9 +25,11 @@
                             <span>{{$menu->title}}</span><span>{{$menu->price}} €</span><span>{{$menu->weight}} g.</span> <span>{{$menu->meat}} g.</span>
                                 
                             <form method="POST" action="{{route('menu.destroy', [$menu])}}">
-                                <button type="submit">Pašalinti</button>
+                                <button type="submit"><i class="fa fa-ban"></i></button>
+                                <a href="{{route('menu.show', [$menu])}}">???</a>
                                 @csrf
                             </form>
+                            
                         </div>
                     </a>
 

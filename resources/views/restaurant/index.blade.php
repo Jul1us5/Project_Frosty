@@ -27,7 +27,7 @@
                                 
                                     
                                     <form method="POST" action="{{route('restaurant.destroy', [$restaurant])}}">
-                                    <button type="submit">Pašalinti</button>
+                                    <button type="submit"><i class="fa fa-ban"></i></button>
                                     @csrf
                                 </form>
                             </div>
