@@ -29,6 +29,7 @@ Route::group(['prefix' => 'menus'], function(){
     Route::get('edit/{menu}', 'MenuController@edit')->name('menu.edit');
     Route::post('update/{menu}', 'MenuController@update')->name('menu.update');
     Route::post('delete/{menu}', 'MenuController@destroy')->name('menu.destroy');
+    Route::get('show/{menu}', 'MenuController@show')->name('menu.show');
  });
 
  Route::group(['prefix' => 'restaurants'], function(){

@@ -11325,6 +11325,10 @@ select {
   background-color: rgba(237, 237, 237, 0.8);
 }
 
+.fa {
+  color: red;
+}
+
 @media (max-width: 576px) {
   .wrap-area {
     position: absolute;
