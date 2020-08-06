@@ -13,7 +13,7 @@
                 </div>
             @endif
                 <div class="home_head">
-                    <a href="{{route('home')}}"> < ATGAL </a>
+                @include('layouts.navi')
                     <p> Restorano koregavimas.</p>
                 </div>
 
@@ -28,7 +28,7 @@
                         
                         @foreach ($menus as $menu)
                             <option value="{{$menu->id}}" @if($menu->id == $restaurant->menu_id) selected @endif>
-                                {{$menu->title}} {{$menu->price}}
+                                {{$menu->title}} | Kaina {{$menu->price}} €
                             </option>
                         @endforeach
                     </select>

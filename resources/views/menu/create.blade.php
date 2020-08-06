@@ -12,10 +12,12 @@
                         {{ session('status') }}
                     </div>
                 @endif
-                    <div class="home_head">
-                    <a href="{{route('home')}}"> < ATGAL </a>
-                        <p> Pridėti patiekalą.</p>
-                    </div>
+
+                <div class="home_head">
+                @include('layouts.navi')
+                    <p> Pridėti patiekalą.</p>
+                </div>
+                
 
 
                 <form method="POST" action="{{route('menu.store')}}" enctype="multipart/form-data">
@@ -44,6 +46,11 @@
 <script>
 $(document).ready(function() {
    $('#summernote').summernote({ 
+    popover: {
+            image: [],
+            link: [],
+            air: []
+            },
   placeholder: 'Komentaras',   
   height: 400,
   minHeight: 115,              

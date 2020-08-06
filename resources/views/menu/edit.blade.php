@@ -14,7 +14,7 @@
                     @endif
 
                     <div class="home_head">
-                        <a href="{{route('home')}}"> < ATGAL </a>
+                    @include('layouts.navi')
                         <p> Patiekalo koregavimas.</p>
                     </div>
 
@@ -24,9 +24,6 @@
                                 <span>Kaina</span> <input type="text" name="price" value="{{$menu->price}}">
                                 <span>Porcijos svoris</span> <input type="text" name="weight" value="{{$menu->weight}}">
                                 <span>Mėsos kiekis porcijoje</span> <input type="text" name="meat" value="{{$menu->meat}}">
-                            <div class="space">
-                                <img src="{{asset('images/menu/'.$menu->img)}}">
-                            </div>
                         </div> 
                         <div class="summer">
                             <textarea type="text" id="summernote" name="about">{{$menu->about}}</textarea>
@@ -44,6 +41,11 @@
 <script>
 $(document).ready(function() {
     $('#summernote').summernote({ 
+        popover: {
+            image: [],
+            link: [],
+            air: []
+            },
     placeholder: 'Komentaras',   
     height: 400,
     minHeight: 115,              

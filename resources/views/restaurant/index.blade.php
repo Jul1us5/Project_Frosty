@@ -33,11 +33,12 @@
                             </div>
                         </a>
                     @endforeach
-                @else
-                    <div class="note">
-                        <p>Kolkas tuščia..</p>
-                    </div>
-                @endif
+                    <div class="menu_box up"><a href="{{route('restaurant.create')}}">Pridėti naują restoraną</a></div>
+                    @else
+                        <div class="note">
+                            <p>Kolkas tuščia..</p>
+                        </div>
+                    @endif
 
 
 
