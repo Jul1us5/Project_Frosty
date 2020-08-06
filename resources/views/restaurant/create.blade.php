@@ -14,7 +14,7 @@
 
             @if (!count($menus) == 0)
                 <div class="home_head">
-                    <a href="{{route('home')}}"> < ATGAL </a>
+                @include('layouts.navi')
                     <p> Pridėti Restoraną.</p>
                 </div>
 
@@ -27,7 +27,7 @@
                     <select name="menu_id">
                     <span>Darbuotojų:</span>
                         @foreach ($menus as $menu)
-                        <option class="options" value="{{$menu->id}}">{{$menu->title}} {{$menu->price}}</option>
+                        <option class="options" value="{{$menu->id}}">{{$menu->title}} | Kaina: {{$menu->price}} €</option>
                         @endforeach
                     </select>
                 </div>

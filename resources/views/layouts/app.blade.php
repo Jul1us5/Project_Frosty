@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Stay Frosty!') }}</title>
+    <title>{{ config('app.name', 'Restoranai') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
@@ -15,7 +15,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link rel="stylesheet" href="./CSS/font-awesome.min.css">
+    <link rel="stylesheet" href="/Project_Frosty/public/css/font-awesome.min.css">
 
     <!-- include summernote css/js -->
     <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
@@ -65,11 +65,11 @@
                                                 
                                                 <div class="my-nav">
                                                     <a href="{{route('home')}}">{{ __('Pagrindinis') }}</a>
-                                                    <a href="{{route('home')}}">{{ __('Kategorija') }}</a>
-                                                    <a href="{{route('home')}}">{{ __('Sąrašai') }}</a>
-                                                    <a href="{{route('home')}}">{{ __('Prideti') }}</a>
-                                                    <a href="{{route('home')}}">{{ __('Kita') }}</a>
-                                                                                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                                    <a href="{{route('restaurant.create')}}">{{ __('Priėti') }}</a>
+                                                    <a href="{{route('restaurant.index')}}">{{ __('Restoranai') }}</a>
+                                                    <a href="{{route('menu.create')}}">{{ __('Sukurti') }}</a>
+                                                    <a href="{{route('menu.index')}}">{{ __('Patiekalai') }}</a>
+                                                    <a class="dropdown-item" href="{{ route('logout') }}"
                                                     onclick="event.preventDefault();
                                                                     document.getElementById('logout-form').submit();">
                                                         {{ __('Atsijungti') }}

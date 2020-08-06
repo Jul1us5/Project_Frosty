@@ -48,7 +48,7 @@ class MenuController extends Controller
             'price' => ['min:1', 'max:64'],
             'weight' => ['min:1', 'max:64'],
             'meat' => ['min:1', 'max:64'],
-            'about' => ['min:3', 'max:64'],
+            'about' => ['min:3', 'max:300'],
         ],
             [
             'title.min' => 'Reikia užpildyti pavadinimą.',
@@ -64,10 +64,10 @@ class MenuController extends Controller
         } 
         if($request->price > 9999) {
             $request->flash();
-            return redirect()->back()->withErrors($validator);
+            return redirect()->back()->with('bad_message', 'Tokios kainos negali buti.');
         }
-                if($request->meat > $request->weight) {
-            return redirect()->back()->with('bad_message', 'Mėsos daugiau už svorio? :D');
+        if($request->meat > $request->weight) {
+            return redirect()->back()->with('bad_message', 'Mėsos daugiau už svorio...');
         }
       
     
@@ -130,7 +130,7 @@ class MenuController extends Controller
             'price' => ['min:1', 'max:64'],
             'weight' => ['min:1', 'max:64'],
             'meat' => ['min:1', 'max:64'],
-            'about' => ['min:3', 'max:64'],
+            'about' => ['min:3', 'max:300'],
         ],
             [
             'title.min' => 'Reikia užpildyti pavadinimą.',
