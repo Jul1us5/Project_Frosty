@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Menu;
+use App\Restaurant;
 use Validator;
 use Illuminate\Http\Request;
 
@@ -17,10 +18,20 @@ class MenuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $menus = Menu::all();
-        return view('menu.index', compact('menus'));
+        $restaurants = Restaurant::all();
+        
+
+        if($request->menu_id) {
+            $menus = Menu::where('id', $request->menu_id)->get();
+            
+        } else {
+            $menus = Menu::all();
+        }
+
+        
+        return view('menu.index', compact('menus', 'restaurants'));
     }
 
     /**
