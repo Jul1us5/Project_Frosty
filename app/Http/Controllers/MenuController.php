@@ -20,7 +20,7 @@ class MenuController extends Controller
     public function index()
     {
         $menus = Menu::all();
-        return view('menu.index', ['menus' => $menus]);
+        return view('menu.index', compact('menus'));
     }
 
     /**
@@ -100,7 +100,7 @@ class MenuController extends Controller
      */
     public function show(Menu $menu)
     {
-        return view('menu.show', ['menu' => $menu]);
+        return view('menu.show', compact('menu'));
     }
     
 
@@ -112,7 +112,7 @@ class MenuController extends Controller
      */
     public function edit(Menu $menu)
     {
-        return view('menu.edit', ['menu' => $menu]);
+        return view('menu.edit', compact('menu'));
     }
 
     /**
@@ -166,7 +166,7 @@ class MenuController extends Controller
 
 
         if($menu->restaurant->count()){
-            return redirect()->route('menu.index')->with('success_message', 'Šis menių prisegtas.');
+            return redirect()->route('menu.index')->with('bad_message', 'Šis menių priskirtas prie Restorano.');
         }
         $menu->delete();
         return redirect()->route('menu.index')->with('success_message', 'Sekmingai ištrintas.');

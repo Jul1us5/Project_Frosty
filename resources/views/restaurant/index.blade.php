@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 
 @section('content')
@@ -12,8 +11,6 @@
                     </div>
                 @endif
 
-
-               
                 @if (!count($restaurants) == 0)
                 <span>Nr.</span><span>Pavadinimas</span><span>Žmonių</span><span>Personalas</span> <span>Patiekalas</span>
                     @foreach ($restaurants as $key => $restaurant)
@@ -33,21 +30,16 @@
                             </div>
                         </a>
                     @endforeach
-                    <div class="menu_box up"><a href="{{route('restaurant.create')}}">Pridėti naują restoraną</a></div>
+                    
                     @else
-                        <div class="note">
-                            <p>Kolkas tuščia..</p>
-                        </div>
+                    <div class="homes">
+                            <h3>Kolkas tuščia</h3>
+                    </div>
                     @endif
 
-
-
-
-
-             
-
-
-                
+                    @if (!count($menus) == 0)
+                        <div class="menu_box up"><a href="{{route('restaurant.create')}}"><b>Pridėti naują restoraną</b></a></div>
+                    @endif
 
             </div>
             @include('layouts.menu')

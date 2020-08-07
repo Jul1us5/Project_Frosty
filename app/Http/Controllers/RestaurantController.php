@@ -21,7 +21,8 @@ class RestaurantController extends Controller
     public function index()
     {
         $restaurants = Restaurant::all();
-        return view('restaurant.index', ['restaurants' => $restaurants]);
+        $menus = Menu::all();
+        return view('restaurant.index', compact('restaurants','menus'));
     }
 
     /**
@@ -32,7 +33,7 @@ class RestaurantController extends Controller
     public function create()
     {
         $menus = Menu::all();
-        return view('restaurant.create', ['menus' => $menus]);
+        return view('restaurant.create', compact('menus'));
     }
 
     /**
@@ -77,21 +78,10 @@ class RestaurantController extends Controller
      * @param  \App\Restaurant  $restaurant
      * @return \Illuminate\Http\Response
      */
-    public function show(Restaurant $restaurant)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Restaurant  $restaurant
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Restaurant $restaurant)
     {
         $menus = Menu::all();
-        return view('restaurant.edit', ['restaurant' => $restaurant, 'menus' => $menus]);
+        return view('restaurant.edit', compact('restaurant','menus'));
     }
 
     /**
