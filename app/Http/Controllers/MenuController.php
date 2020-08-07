@@ -20,18 +20,32 @@ class MenuController extends Controller
      */
     public function index(Request $request)
     {
-        $restaurants = Restaurant::all();
-        
+        $restaurants = Restaurant::orderBy('name')->get();
+        $select = 0;
+        $sort = '';
 
-        if($request->menu_id) {
-            $menus = Menu::where('id', $request->menu_id)->get();
-            
+        if($request->id) {
+            $menus = Menu::where('id', $request->id)->get();
+            $select = $request->id;
         } else {
-            $menus = Menu::all();
+            
+            if($request->sort) {
+                if($request->sort == 'price') {
+                    $menus = Menu::orderBy('price')->get();
+                    $sort = 'price';
+                } elseif($request->sort == 'title') {
+                    $menus = Menu::orderBy('title')->get();
+                    $sort = 'title';
+                } else {
+                    $menus = Menu::orderBy('price')->get();
+                }
+            } else {
+                $menus = Menu::orderBy('price')->get();
+            }
         }
 
         
-        return view('menu.index', compact('menus', 'restaurants'));
+        return view('menu.index', compact('menus', 'restaurants', 'select', 'sort'));
     }
 
     /**

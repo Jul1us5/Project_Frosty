@@ -18,12 +18,17 @@
 
                 <form action="{{route('menu.index')}}" method="get">
                     <div class="filter">
-                        <select name="menu_id">
+                        <select name="id">
+                            <option value="0">Show all</option>
                                 @foreach ($restaurants as $restaurant)
-                                <option class="options" value="{{$restaurant->menu_id}}">{{$restaurant->name}}</option>
+                                <option class="options" value="{{$restaurant->menu_id}}" @if($restaurant->menu_id == $select) selected @endif>{{$restaurant->name}}</option>
                                 @endforeach
                         </select>
+                      
+                        Price : <input type="radio" name="sort" value="price" @if('price' == $sort) checked @endif>
+                        Title : <input type="radio" name="sort" value="title" @if('title' == $sort) checked @endif>
                         <button type="submit">FILTER</button>
+                        <a href="{{route('menu.index')}}">X</a>
                     </div>
                 </form>
 

@@ -20,8 +20,8 @@
                                     <span>{{$restaurant->name}}</span>
                                     <span>{{$restaurant->customers}}</span>
                                     <span>{{$restaurant->employees}}</span>
-                                    <span>{{$restaurant->menu->title}}</span>
-                                
+                                    <a href="{{route('menu.show', [$restaurant->menu->id])}}"><span>{{$restaurant->menu->title}}</span></a>
+                                    
                                     
                                     <form method="POST" action="{{route('restaurant.destroy', [$restaurant])}}">
                                     <button type="submit"><i class="fa fa-ban"></i></button>
