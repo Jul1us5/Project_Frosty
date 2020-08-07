@@ -20,7 +20,7 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        $restaurants = Restaurant::all();
+        $restaurants = Restaurant::orderBy('name')->get();
         $menus = Menu::all();
         return view('restaurant.index', compact('restaurants','menus'));
     }
@@ -32,8 +32,9 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-        $menus = Menu::all();
+        $menus = Menu::orderBy('title')->get();
         return view('restaurant.create', compact('menus'));
+        
     }
 
     /**
