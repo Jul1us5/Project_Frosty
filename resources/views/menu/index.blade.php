@@ -13,8 +13,21 @@
             </div>
                 @endif
 
+
                 @if (!count($menus) == 0)
-                    <span>Pavadinimas</span><span>Kaina</span><span>Svoris</span> <span>Įdaras</span><span></span>
+
+                <form action="{{route('menu.index')}}" method="get">
+                    <div class="filter">
+                        <select name="menu_id">
+                                @foreach ($restaurants as $restaurant)
+                                <option class="options" value="{{$restaurant->menu_id}}">{{$restaurant->name}}</option>
+                                @endforeach
+                        </select>
+                        <button type="submit">FILTER</button>
+                    </div>
+                </form>
+
+                <span>Pavadinimas</span><span>Kaina</span><span>Svoris</span> <span>Įdaras</span><span></span>
                 @foreach($menus as $menu)
                     <div class="menu_box">
                         <a href="{{route('menu.show', [$menu])}}">
