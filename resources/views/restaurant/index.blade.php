@@ -12,6 +12,19 @@
                 @endif
 
                 @if (!count($restaurants) == 0)
+                <form action="{{route('restaurant.index')}}" method="get">
+                    <div class="filter">
+                        <select name="menu_id">
+                            <option value="0">Show all</option>
+                                @foreach ($menus as $menu)
+                                <option class="options" value="{{$menu->id}}" @if($select == $menu->id) selected @endif>{{$menu->title}}</option>
+                                @endforeach
+                        </select>
+                    
+                        <button type="submit">FILTER</button>
+                        <a href="{{route('restaurant.index')}}">X</a>
+                    </div>
+                </form>
                 <span>Nr.</span><span>Pavadinimas</span><span>Žmonių</span><span>Personalas</span> <span>Patiekalas</span>
                     @foreach ($restaurants as $key => $restaurant)
                         <a href="{{route('restaurant.edit',[$restaurant])}}">
