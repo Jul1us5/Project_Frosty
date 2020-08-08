@@ -21,7 +21,7 @@
                         <select name="id">
                             <option value="0">Show all</option>
                                 @foreach ($restaurants as $restaurant)
-                                <option class="options" value="{{$restaurant->menu_id}}" @if($restaurant->menu_id == $select) selected @endif>{{$restaurant->name}}</option>
+                                <option class="options" value="{{$restaurant->menu_id}}" @if($select == $restaurant->menu_id) selected @endif>{{$restaurant->name}}</option>
                                 @endforeach
                         </select>
                       

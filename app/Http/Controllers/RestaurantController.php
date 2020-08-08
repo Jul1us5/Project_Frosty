@@ -18,11 +18,21 @@ class RestaurantController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $restaurants = Restaurant::orderBy('name')->get();
         $menus = Menu::all();
-        return view('restaurant.index', compact('restaurants','menus'));
+        $select = 0;
+
+        if($request->menu_id) {
+            $restaurants = Restaurant::where('menu_id', $request->menu_id)->get();
+            $select = $request->menu_id;
+
+        } else {
+            $restaurants = Restaurant::orderBy('name')->get();
+        }
+
+        return view('restaurant.index', compact('restaurants','menus', 'select'));
     }
 
     /**
