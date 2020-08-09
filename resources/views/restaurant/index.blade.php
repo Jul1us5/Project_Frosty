@@ -6,9 +6,9 @@
         <div class="col-md-8">
             <div class="home_container">
                 @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
+                <div class="alert alert-success" role="alert">
+                    {{ session('status') }}
+                </div>
                 @endif
 
                 @if (!count($restaurants) == 0)
@@ -16,43 +16,43 @@
                     <div class="filter">
                         <select name="menu_id">
                             <option value="0">Show all</option>
-                                @foreach ($menus as $menu)
-                                <option class="options" value="{{$menu->id}}" @if($select == $menu->id) selected @endif>{{$menu->title}}</option>
-                                @endforeach
+                            @foreach ($menus as $menu)
+                            <option class="options" value="{{$menu->id}}" @if($select==$menu->id) selected @endif>{{$menu->title}}</option>
+                            @endforeach
                         </select>
-                    
+
                         <button type="submit">FILTER</button>
                         <a href="{{route('restaurant.index')}}">X</a>
                     </div>
                 </form>
                 <span>Nr.</span><span>Pavadinimas</span><span>Žmonių</span><span>Personalas</span> <span>Patiekalas</span>
-                    @foreach ($restaurants as $key => $restaurant)
-                        <a href="{{route('restaurant.edit',[$restaurant])}}">
-                            <div class="menu_box">
-                                    <span>{{$key+1}}</span>
-                                    <span>{{$restaurant->name}}</span>
-                                    <span>{{$restaurant->customers}}</span>
-                                    <span>{{$restaurant->employees}}</span>
-                                    <a href="{{route('menu.show', [$restaurant->menu->id])}}"><span>{{$restaurant->menu->title}}</span></a>
-                                    
-                                    
-                                    <form method="POST" action="{{route('restaurant.destroy', [$restaurant])}}">
-                                    <button type="submit"><i class="fa fa-ban"></i></button>
-                                    @csrf
-                                </form>
-                            </div>
-                        </a>
-                    @endforeach
-                    
-                    @else
-                    <div class="homes">
-                            <h3>Kolkas tuščia</h3>
-                    </div>
-                    @endif
+                @foreach ($restaurants as $key => $restaurant)
+                <a href="{{route('restaurant.edit',[$restaurant])}}">
+                    <div class="menu_box">
+                        <span>{{$key+1}}</span>
+                        <span>{{$restaurant->name}}</span>
+                        <span>{{$restaurant->customers}}</span>
+                        <span>{{$restaurant->employees}}</span>
+                        <a href="{{route('menu.show', [$restaurant->menu->id])}}"><span>{{$restaurant->menu->title}}</span></a>
 
-                    @if (!count($menus) == 0)
-                        <div class="menu_box up"><a href="{{route('restaurant.create')}}"><b>Pridėti naują restoraną</b></a></div>
-                    @endif
+
+                        <form method="POST" action="{{route('restaurant.destroy', [$restaurant])}}">
+                            <button type="submit"><i class="fa fa-ban"></i></button>
+                            @csrf
+                        </form>
+                    </div>
+                </a>
+                @endforeach
+
+                @else
+                <div class="homes">
+                    <h3>Kolkas tuščia</h3>
+                </div>
+                @endif
+
+                @if (!count($menus) == 0)
+                <div class="menu_box up"><a href="{{route('restaurant.create')}}"><b>Pridėti naują restoraną</b></a></div>
+                @endif
 
             </div>
             @include('layouts.menu')

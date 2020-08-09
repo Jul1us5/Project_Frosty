@@ -24,16 +24,16 @@ class MenuController extends Controller
         $select = 0;
         $sort = '';
 
-        if($request->id) {
+        if ($request->id) {
             $menus = Menu::where('id', $request->id)->get();
             $select = $request->id;
         } else {
-            
-            if($request->sort) {
-                if($request->sort == 'price') {
+
+            if ($request->sort) {
+                if ($request->sort == 'price') {
                     $menus = Menu::orderBy('price')->get();
                     $sort = 'price';
-                } elseif($request->sort == 'title') {
+                } elseif ($request->sort == 'title') {
                     $menus = Menu::orderBy('title')->get();
                     $sort = 'title';
                 } else {
@@ -44,7 +44,7 @@ class MenuController extends Controller
             }
         }
 
-        
+
         return view('menu.index', compact('menus', 'restaurants', 'select', 'sort'));
     }
 
@@ -66,36 +66,37 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-       
-        $validator = Validator::make($request->all(),
-        [
-            'title' => ['min:4', 'max:64'],
-            'price' => ['min:1', 'max:64'],
-            'weight' => ['min:1', 'max:64'],
-            'meat' => ['min:1', 'max:64'],
-            'about' => ['min:3', 'max:300'],
-        ],
+
+        $validator = Validator::make(
+            $request->all(),
             [
-            'title.min' => 'Reikia užpildyti pavadinimą.',
-            'price.min' => 'Kaina nurodyta blogai.',
-            'weight.min' => 'Blogas svoris',
-            'meat.min' => 'Blogas svoris',
-            'about.min' => 'Nera komentaro.',
+                'title' => ['min:4', 'max:64'],
+                'price' => ['min:1', 'max:64'],
+                'weight' => ['min:1', 'max:64'],
+                'meat' => ['min:1', 'max:64'],
+                'about' => ['min:3', 'max:300'],
+            ],
+            [
+                'title.min' => 'Reikia užpildyti pavadinimą.',
+                'price.min' => 'Kaina nurodyta blogai.',
+                'weight.min' => 'Blogas svoris',
+                'meat.min' => 'Blogas svoris',
+                'about.min' => 'Nera komentaro.',
             ]
         );
         if ($validator->fails()) {
             $request->flash();
             return redirect()->back()->withErrors($validator);
-        } 
-        if($request->price > 9999) {
+        }
+        if ($request->price > 9999) {
             $request->flash();
             return redirect()->back()->with('bad_message', 'Tokios kainos negali buti.');
         }
-        if($request->meat > $request->weight) {
+        if ($request->meat > $request->weight) {
             return redirect()->back()->with('bad_message', 'Mėsos daugiau už svorio...');
         }
-      
-    
+
+
 
         $menu = new Menu;
         $menu->title = $request->title;
@@ -105,7 +106,7 @@ class MenuController extends Controller
         $menu->about = $request->about;
         $menu->img = 'menu.jpg';
 
-        if($request->hasFile('img')) {
+        if ($request->hasFile('img')) {
             $imgae = $request->file('img');
             $name = $request->file('img')->getClientOriginalName();
             $destinationPath = public_path('/images/menu');
@@ -127,7 +128,7 @@ class MenuController extends Controller
     {
         return view('menu.show', compact('menu'));
     }
-    
+
 
     /**
      * Show the form for editing the specified resource.
@@ -149,27 +150,28 @@ class MenuController extends Controller
      */
     public function update(Request $request, Menu $menu)
     {
-        $validator = Validator::make($request->all(),
-        [
-            'title' => ['min:4', 'max:64'],
-            'price' => ['min:1', 'max:64'],
-            'weight' => ['min:1', 'max:64'],
-            'meat' => ['min:1', 'max:64'],
-            'about' => ['min:3', 'max:300'],
-        ],
+        $validator = Validator::make(
+            $request->all(),
             [
-            'title.min' => 'Reikia užpildyti pavadinimą.',
-            'price.min' => 'Kaina nurodyta blogai.',
-            'weight.min' => 'Blogas svoris',
-            'meat.min' => 'Blogas svoris',
-            'about.min' => 'Nera komentaro.',
+                'title' => ['min:4', 'max:64'],
+                'price' => ['min:1', 'max:64'],
+                'weight' => ['min:1', 'max:64'],
+                'meat' => ['min:1', 'max:64'],
+                'about' => ['min:3', 'max:300'],
+            ],
+            [
+                'title.min' => 'Reikia užpildyti pavadinimą.',
+                'price.min' => 'Kaina nurodyta blogai.',
+                'weight.min' => 'Blogas svoris',
+                'meat.min' => 'Blogas svoris',
+                'about.min' => 'Nera komentaro.',
             ]
         );
-       if ($validator->fails()) {
-           $request->flash();
-           return redirect()->back()->withErrors($validator);
-       }
-        
+        if ($validator->fails()) {
+            $request->flash();
+            return redirect()->back()->withErrors($validator);
+        }
+
         $menu->title = $request->title;
         $menu->price = $request->price;
         $menu->weight = $request->weight;
@@ -190,7 +192,7 @@ class MenuController extends Controller
     {
 
 
-        if($menu->restaurant->count()){
+        if ($menu->restaurant->count()) {
             return redirect()->route('menu.index')->with('bad_message', 'Šis menių priskirtas prie Restorano.');
         }
         $menu->delete();
