@@ -24,15 +24,14 @@ class RestaurantController extends Controller
         $menus = Menu::all();
         $select = 0;
 
-        if($request->menu_id) {
+        if ($request->menu_id) {
             $restaurants = Restaurant::where('menu_id', $request->menu_id)->get();
             $select = $request->menu_id;
-
         } else {
             $restaurants = Restaurant::orderBy('name')->get();
         }
 
-        return view('restaurant.index', compact('restaurants','menus', 'select'));
+        return view('restaurant.index', compact('restaurants', 'menus', 'select'));
     }
 
     /**
@@ -44,7 +43,6 @@ class RestaurantController extends Controller
     {
         $menus = Menu::orderBy('title')->get();
         return view('restaurant.create', compact('menus'));
-        
     }
 
     /**
@@ -55,18 +53,19 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(),
-        [
-            'name' => ['min:4', 'max:64'],
-            'customers' => ['min:1', 'max:64'],
-            'employees' => ['min:1', 'max:64'],
-            'menu_id' => ['min:1', 'max:64'],
-        ],
+        $validator = Validator::make(
+            $request->all(),
             [
-            'name.min' => 'Reikia užpildyti pavadinimą.',
-            'customers.min' => 'Žmonių skaičius nurodytas blogai.',
-            'employees.min' => 'Darbuotojų skaičius nurodytas blogai.',
-            'menu_id.min' => 'Blogas meniu',
+                'name' => ['min:4', 'max:64'],
+                'customers' => ['min:1', 'max:64'],
+                'employees' => ['min:1', 'max:64'],
+                'menu_id' => ['min:1', 'max:64'],
+            ],
+            [
+                'name.min' => 'Reikia užpildyti pavadinimą.',
+                'customers.min' => 'Žmonių skaičius nurodytas blogai.',
+                'employees.min' => 'Darbuotojų skaičius nurodytas blogai.',
+                'menu_id.min' => 'Blogas meniu',
             ]
         );
         if ($validator->fails()) {
@@ -92,7 +91,7 @@ class RestaurantController extends Controller
     public function edit(Restaurant $restaurant)
     {
         $menus = Menu::all();
-        return view('restaurant.edit', compact('restaurant','menus'));
+        return view('restaurant.edit', compact('restaurant', 'menus'));
     }
 
     /**
@@ -104,25 +103,26 @@ class RestaurantController extends Controller
      */
     public function update(Request $request, Restaurant $restaurant)
     {
-        $validator = Validator::make($request->all(),
-        [
-            'name' => ['min:4', 'max:64'],
-            'customers' => ['min:1', 'max:64'],
-            'employees' => ['min:1', 'max:64'],
-            'menu_id' => ['min:1', 'max:64'],
-        ],
+        $validator = Validator::make(
+            $request->all(),
             [
-            'name.min' => 'Reikia užpildyti pavadinimą.',
-            'customers.min' => 'Žmonių skaičius nurodytas blogai.',
-            'employees.min' => 'Darbuotojų skaičius nurodytas blogai.',
-            'menu_id.min' => 'Blogas meniu',
+                'name' => ['min:4', 'max:64'],
+                'customers' => ['min:1', 'max:64'],
+                'employees' => ['min:1', 'max:64'],
+                'menu_id' => ['min:1', 'max:64'],
+            ],
+            [
+                'name.min' => 'Reikia užpildyti pavadinimą.',
+                'customers.min' => 'Žmonių skaičius nurodytas blogai.',
+                'employees.min' => 'Darbuotojų skaičius nurodytas blogai.',
+                'menu_id.min' => 'Blogas meniu',
             ]
         );
         if ($validator->fails()) {
             $request->flash();
             return redirect()->back()->withErrors($validator);
         }
-        
+
         $restaurant->name = $request->name;
         $restaurant->customers = $request->customers;
         $restaurant->employees = $request->employees;
@@ -141,6 +141,5 @@ class RestaurantController extends Controller
     {
         $restaurant->delete();
         return redirect()->route('restaurant.index')->with('success_message', 'Sekmingai ištrintas.');
-        
     }
 }
