@@ -15,14 +15,15 @@
                 <form action="{{route('restaurant.index')}}" method="get">
                     <div class="filter">
                         <select name="menu_id">
-                            <option value="0">Show all</option>
+                            <option value="0">Restoranai</option>
                             @foreach ($menus as $menu)
                             <option class="options" value="{{$menu->id}}" @if($select==$menu->id) selected @endif>{{$menu->title}}</option>
                             @endforeach
                         </select>
-
-                        <button type="submit">FILTER</button>
-                        <a href="{{route('restaurant.index')}}">X</a>
+                        <div class="sorts">
+                            <button type="submit">Rodyti</button>
+                            <a href="{{route('restaurant.index')}}"><i class="fa fa-times"></i></a>
+                        </div>
                     </div>
                 </form>
                 <span>Nr.</span><span>Pavadinimas</span><span>Žmonių</span><span>Personalas</span> <span>Patiekalas</span>

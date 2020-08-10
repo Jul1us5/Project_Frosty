@@ -11393,6 +11393,42 @@ select {
   margin: 5px 0px 0px 5px;
 }
 
+.filter .sorts {
+  display: inline-block;
+  height: 22px;
+  line-height: 20px;
+  margin-top: 5px;
+  margin-left: 20px;
+  padding: 0px 14px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.filter input {
+  margin-left: 5px;
+  color: red;
+  padding-top: 2px;
+}
+
+.filter button {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  margin-left: 10px;
+  padding: 0px 10px;
+  background-color: white;
+}
+
+.filter a {
+  margin-left: 10px;
+  padding: 0px 10px;
+  background-color: white;
+  color: black;
+}
+
 .space_show {
   display: inline-block;
   width: 100%;
