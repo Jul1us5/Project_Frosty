@@ -14,13 +14,15 @@
                 @if (!count($restaurants) == 0)
                 <form action="{{route('restaurant.index')}}" method="get">
                     <div class="filter">
-                        <select name="menu_id">
+                        <select name="rest">
                             <option value="0">Restoranai</option>
                             @foreach ($menus as $menu)
-                            <option class="options" value="{{$menu->id}}" @if($select==$menu->id) selected @endif>{{$menu->title}}</option>
+                            <option class="options" value="{{$menu->id}}" @if($selectRest==$menu->id) selected @endif>{{$menu->title}}</option>
                             @endforeach
                         </select>
                         <div class="sorts">
+                            Žmonių <input type="radio" name="sortRest" value="customers" @if('customers' == $sortRest) checked @endif>
+                            Personalas <input type="radio" name="sortRest" value="employees" @if('employees' == $sortRest) checked @endif>
                             <button type="submit">Rodyti</button>
                             <a href="{{route('restaurant.index')}}"><i class="fa fa-times"></i></a>
                         </div>

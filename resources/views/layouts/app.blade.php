@@ -65,10 +65,10 @@
                                                 
                                                 <div class="my-nav">
                                                     <a href="{{route('home')}}">{{ __('Pagrindinis') }}</a>
-                                                    <a href="{{route('restaurant.create')}}">{{ __('Priėti') }}</a>
+                                                    <a href="{{route('restaurant.create')}}">{{ __('Pridėti') }}</a>
                                                     <a href="{{route('restaurant.index')}}">{{ __('Restoranai') }}</a>
                                                     <a href="{{route('menu.create')}}">{{ __('Sukurti') }}</a>
-                                                    <a href="{{route('menu.index')}}">{{ __('Patiekalai') }}</a>
+                                                    <a href="{{route('menu.index')}}">{{ __('Meniu') }}</a>
                                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                                     onclick="event.preventDefault();
                                                                     document.getElementById('logout-form').submit();">
