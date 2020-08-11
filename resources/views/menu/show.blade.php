@@ -29,7 +29,7 @@
                     <span>{{$menu->price}} €</span>
                     <span>{{$menu->weight}} gr.</span>
                     <span>{{$menu->meat}} gr.</span>
-                    <p>{!!$menu->about!!}</p>
+                    {!!$menu->about!!}
 
                 </div>
 

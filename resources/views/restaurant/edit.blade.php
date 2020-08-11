@@ -22,7 +22,8 @@
                         <span>Pavadinimas</span> <input type="text" name="name" value="{{$restaurant->name}}">
                         <span>Talpina žmonių</span> <input type="text" name="customers" value="{{$restaurant->customers}}">
                         <span>Darbuotojų</span> <input type="text" name="employees" value="{{$restaurant->employees}}">
-                    </div> 
+                        <span>Patiekalas: </span> 
+                   
                     
                     <select name="menu_id">
                         
@@ -32,7 +33,7 @@
                             </option>
                         @endforeach
                     </select>
-
+                </div> 
                     @csrf
                     <button class="button_Menu" type="submit">Baigti</button>
                 </form>
