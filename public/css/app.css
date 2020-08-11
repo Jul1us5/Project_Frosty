@@ -11323,16 +11323,6 @@ body {
   background-color: rgba(237, 237, 237, 0.5);
 }
 
-.home_body select {
-  display: inline-block;
-  width: 30%;
-  float: right;
-  margin: 2px;
-  margin-left: 150px;
-  border: none;
-  background-color: rgba(237, 237, 237, 0.8);
-}
-
 .home_body .space {
   display: inline-block;
   width: 100%;
@@ -11359,16 +11349,6 @@ body {
   left: 0;
 }
 
-select {
-  display: inline-block;
-  width: 35%;
-  float: right;
-  margin: 2px;
-  margin-right: 148px;
-  border: none;
-  background-color: rgba(237, 237, 237, 0.8);
-}
-
 .homes {
   display: inline-block;
   width: 100%;
@@ -11389,7 +11369,7 @@ select {
 
 .filter select {
   float: left;
-  width: 10%;
+  width: 100px;
   margin: 5px 0px 0px 5px;
 }
 
@@ -11487,6 +11467,15 @@ select {
   font-size: 16px;
 }
 
+.home_body select {
+  display: inline-block;
+  min-width: 35%;
+  margin: 2px;
+  margin-left: 10px;
+  border: none;
+  background-color: rgba(237, 237, 237, 0.8);
+}
+
 @media (max-width: 576px) {
   .col-md-8 {
     flex: 0 0 100%;
@@ -11512,11 +11501,11 @@ select {
     color: black;
   }
 
-  .wrap-area select {
+  .wrap-area .home_body select {
     display: inline-block;
-    width: 100px;
-    margin: 5px;
-    margin-right: 15px;
+    width: 45%;
+    margin: 2px;
+    margin-left: 10px;
     border: none;
     background-color: rgba(237, 237, 237, 0.8);
   }
@@ -11538,6 +11527,10 @@ select {
     display: inline-block;
     float: left;
     width: 100%;
+  }
+
+  select {
+    width: 100px;
   }
 }
 
@@ -11577,16 +11570,6 @@ select {
     width: 45%;
     margin-left: 10px;
   }
-
-  .home_body select {
-    display: inline-block;
-    width: 45%;
-    float: right;
-    margin: 2px;
-    margin-right: 16px;
-    border: none;
-    background-color: rgba(237, 237, 237, 0.8);
-  }
 }
 
 @media (min-width: 992px) {
@@ -11616,6 +11599,15 @@ select {
 
   .my-nav {
     display: none;
+  }
+
+  .home_body select {
+    display: inline-block;
+    width: 35%;
+    margin: 2px;
+    margin-left: 10px;
+    border: none;
+    background-color: rgba(237, 237, 237, 0.8);
   }
 }
 

@@ -18,15 +18,16 @@
         a {
             color: black;
         }
-        select {
-            display: inline-block;
-            width: 100px;
-            margin: 5px;
-            margin-right: 15px;
-            border: none;
-            background-color: rgb(237, 237, 237, 0.8);
+        .home_body {
+            select {
+                display: inline-block;
+                width: 45%;
+                margin: 2px;
+                margin-left: 10px;
+                border: none;
+                background-color: rgb(237, 237, 237, 0.8);
+            }
         }
-
     }
     .meniu {
         display: none;
@@ -44,6 +45,9 @@
         float: left;
         width: 100%;
     }
+    select {
+        width: 100px;
+    }
 }
 @media (min-width: 600px) {
     .my-nav {
@@ -55,11 +59,8 @@
             width: 35%;
             margin-left: 10px;
         }
-    }
-    
+    } 
 }
-
-
 @media (max-width: 840px) {
     .wrap-area {
         position: absolute;
@@ -84,19 +85,8 @@
             width: 45%;
             margin-left: 10px;
         }
-        select {
-            display: inline-block;
-            width: 45%;
-            float: right;
-            margin: 2px;
-            margin-right: 16px;
-            border: none;
-            background-color: rgb(237, 237, 237, 0.8);
-        }
-    }
-    
+    } 
 }
-
 @media (min-width: 992px) {
     .wrap-area {
         position: absolute;
@@ -108,10 +98,8 @@
     }
     .my-nav {
         display: none;
-    }
-    
+    } 
 }
-
 @media (min-width: 1200px) {
     .wrap-area {
         position: absolute;
@@ -123,5 +111,15 @@
     }
     .my-nav {
         display: none;
+    }
+    .home_body {
+        select {
+            display: inline-block;
+            width: 35%;
+            margin: 2px;
+            margin-left: 10px;
+            border: none;
+            background-color: rgb(237, 237, 237, 0.8);
+        }
     }
 }

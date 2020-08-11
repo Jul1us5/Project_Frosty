@@ -22,17 +22,29 @@ class RestaurantController extends Controller
     {
         $restaurants = Restaurant::orderBy('name')->get();
         $menus = Menu::all();
-        $select = 0;
+        $selectRest = 0;
+        $sortRest = '';
 
-        if($request->menu_id) {
-            $restaurants = Restaurant::where('menu_id', $request->menu_id)->get();
-            $select = $request->menu_id;
-
+        if($request->rest) {
+            $restaurants = Restaurant::where('menu_id', $request->rest)->get();
+            $select = $request->rest;
         } else {
-            $restaurants = Restaurant::orderBy('name')->get();
+            if ($request->sortRest) {
+                if($request->sortRest == 'customers') {
+                    $restaurants = Restaurant::orderBy('customers')->get();
+                    $sortRest = 'customers';
+                } elseif ($request->sortRest == 'employees') {
+                    $restaurants = Restaurant::orderBy('employees')->get();
+                    $sortRest = 'employees';
+                } else {
+                    $restaurants = Restaurant::orderBy('employees')->get();
+                }
+            } else {
+                $restaurants = Restaurant::orderBy('name')->get();
+            }
         }
 
-        return view('restaurant.index', compact('restaurants','menus', 'select'));
+        return view('restaurant.index', compact('restaurants','menus', 'selectRest', 'sortRest'));
     }
 
     /**

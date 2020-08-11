@@ -20,16 +20,16 @@
 
                 <form method="POST" action="{{route('restaurant.store')}}">
                 <div class="home_body">
-                    <span>Pavadinimas:</span> <input type="text" name="name" value="{{old('name')}}"><br>
-                    <span>Talpina žmonių:</span> <input type="text" name="customers" value="{{old('customers')}}"><br>
-                    <span>Darbuotojų:</span> <input type="text" name="employees" value="{{old('employees')}}"><br>
                     
-                    <select name="menu_id">
-                    <span>Darbuotojų:</span>
-                        @foreach ($menus as $menu)
-                        <option class="options" value="{{$menu->id}}">{{$menu->title}} | Kaina: {{$menu->price}} €</option>
-                        @endforeach
-                    </select>
+                    <span>Pavadinimas: </span><input type="text" name="name" value="{{old('name')}}"><br>
+                    <span>Talpina žmonių: </span><input type="text" name="customers" value="{{old('customers')}}"><br>
+                    <span>Darbuotojų: </span><input type="text" name="employees" value="{{old('employees')}}"><br>
+                    <span>Patiekalas: </span> 
+                        <select name="menu_id">
+                            @foreach ($menus as $menu)
+                            <option class="options" value="{{$menu->id}}">{{$menu->title}} | Kaina: {{$menu->price}} €</option>
+                            @endforeach
+                        </select>
                 </div>
                     @csrf
                     <button class="button_Menu" type="submit">Pridėti</button>

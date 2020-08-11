@@ -346,15 +346,6 @@ overflow: hidden;
         border: none;
         background-color: rgb(237, 237, 237, 0.5);
     }
-    select {
-        display: inline-block;
-        width: 30%;
-        float: right;
-        margin: 2px;
-        margin-left: 150px;
-        border: none;
-        background-color: rgb(237, 237, 237, 0.8);
-    }
     .space {
         display: inline-block;
         width: 100%;
@@ -369,8 +360,7 @@ overflow: hidden;
             border: 1px dashed rgb(104, 104, 104);
             background-size: cover;
             background-repeat: no-repeat;
-            background-position: center;
-            
+            background-position: center;  
         }
     }
 }
@@ -379,15 +369,6 @@ overflow: hidden;
     width: 100%;
     bottom: 0;
     left: 0;
-}
-select {
-    display: inline-block;
-    width: 35%;
-    float: right;
-    margin: 2px;
-    margin-right: 148px;
-    border: none;
-    background-color: rgb(237, 237, 237, 0.8);
 }
 .homes {
     display: inline-block;
@@ -406,7 +387,7 @@ select {
     border-bottom: 1px dashed rgb(255, 255, 255, 0.3);
     select {
         float: left;
-        width: 10%;
+        width: 100px;
         margin: 5px 0px 0px 5px;
     }
     .sorts {
@@ -465,7 +446,6 @@ select {
         font-size: 30px;
         color: rgb(63, 63, 63);
     }
-
     .img_space {
         width: 100%;
         background-color: white;
@@ -491,6 +471,15 @@ select {
         padding: 20px 40px;
         margin-left: 10%;
         font-size: 16px;
-
+    }
+}
+.home_body {
+    select {
+    display: inline-block;
+    min-width: 35%;
+    margin: 2px;
+    margin-left: 10px;
+    border: none;
+    background-color: rgb(237, 237, 237, 0.8);
     }
 }
