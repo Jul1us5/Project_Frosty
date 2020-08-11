@@ -11451,19 +11451,17 @@ body {
 }
 
 .space_show span {
-  width: 95%;
+  width: 100%;
   height: auto;
-  border-top: 1px dashed rgba(210, 210, 210, 0.5);
   overflow: hidden;
   text-align: center;
-  margin-left: 2.5%;
+  margin-left: 0px;
   padding-top: 2px;
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 .space_show p {
-  width: 80%;
-  padding: 20px 40px;
-  margin-left: 10%;
+  width: 100%;
   font-size: 16px;
 }
 
