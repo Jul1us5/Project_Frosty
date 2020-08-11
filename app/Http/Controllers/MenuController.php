@@ -31,13 +31,13 @@ class MenuController extends Controller
 
             if ($request->sort) {
                 if ($request->sort == 'price') {
-                    $menus = Menu::orderBy('price')->get();
+                    $menus = Menu::orderByDesc('price')->get();
                     $sort = 'price';
                 } elseif ($request->sort == 'title') {
                     $menus = Menu::orderBy('title')->get();
                     $sort = 'title';
                 } else {
-                    $menus = Menu::orderBy('price')->get();
+                    $menus = Menu::orderByDesc('price')->get();
                 }
             } else {
                 $menus = Menu::orderBy('price')->get();
