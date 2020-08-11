@@ -11422,11 +11422,23 @@ select {
   background-color: white;
 }
 
+.filter button:hover {
+  background-color: black;
+  color: white;
+  transition: 1s;
+}
+
 .filter a {
   margin-left: 10px;
   padding: 0px 10px;
   background-color: white;
   color: black;
+}
+
+.filter a:hover {
+  background-color: black;
+  color: white;
+  transition: 1s;
 }
 
 .space_show {
@@ -11502,10 +11514,9 @@ select {
 
   .wrap-area select {
     display: inline-block;
-    width: 45%;
-    float: right;
-    margin: 2px;
-    margin-right: 10px;
+    width: 100px;
+    margin: 5px;
+    margin-right: 15px;
     border: none;
     background-color: rgba(237, 237, 237, 0.8);
   }
@@ -11522,6 +11533,12 @@ select {
     opacity: 0;
     transition: 10s;
   }
+
+  .filter {
+    display: inline-block;
+    float: left;
+    width: 100%;
+  }
 }
 
 @media (min-width: 600px) {
@@ -11532,16 +11549,6 @@ select {
   .home_body input {
     width: 35%;
     margin-left: 10px;
-  }
-
-  .home_body select {
-    display: inline-block;
-    width: 35%;
-    float: right;
-    margin: 2px;
-    margin-right: 148px;
-    border: none;
-    background-color: rgba(237, 237, 237, 0.8);
   }
 }
 
