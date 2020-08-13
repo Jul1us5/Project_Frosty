@@ -18,15 +18,12 @@
                 </div>
 
                 <form method="POST" action="{{route('restaurant.update', [$restaurant])}}">
-                    <div class="home_body">
+                <div class="home_body">
                         <span>Pavadinimas</span> <input type="text" name="name" value="{{$restaurant->name}}">
                         <span>Talpina žmonių</span> <input type="text" name="customers" value="{{$restaurant->customers}}">
                         <span>Darbuotojų</span> <input type="text" name="employees" value="{{$restaurant->employees}}">
                         <span>Patiekalas: </span> 
-                   
-                    
                     <select name="menu_id">
-                        
                         @foreach ($menus as $menu)
                             <option value="{{$menu->id}}" @if($menu->id == $restaurant->menu_id) selected @endif>
                                 {{$menu->title}} | Kaina {{$menu->price}} €
@@ -34,10 +31,9 @@
                         @endforeach
                     </select>
                 </div> 
-                    @csrf
-                    <button class="button_Menu" type="submit">Baigti</button>
+                @csrf
+                <button class="button_Menu" type="submit">Baigti</button>
                 </form>
-
             </div>
             @include('layouts.menu')
         </div>
