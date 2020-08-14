@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+
 use Validator;
 
 use Illuminate\Database\Eloquent\Model;
@@ -15,5 +16,4 @@ class Menu extends Model
     {
         return $this->hasMany('App\Menu', 'menu_id', 'id');
     }
- 
 }
